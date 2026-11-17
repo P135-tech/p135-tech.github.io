@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Parth Brahmbhatt</title>
+<meta name="description" content="Parth Brahmbhatt – Shopify developer and data analyst. Shopify apps, integrations, storefronts and data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: one column of sections under a sticky name bar; a "by the numbers" ledger in the hero
+   ties the developer work to the data-analyst side. */
+:root{
+  --bg:#F5F8F7; --surface:#FFFFFF; --ink:#13212B; --muted:#56656E; --line:#DCE5E2;
+  --accent:#1D5C63; --accent-soft:#E2EFEC; --highlight:#3BA58F;
+  --display:"Space Grotesk",system-ui,sans-serif; --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0E171C; --surface:#152229; --ink:#E6EEEC; --muted:#9AAAB0; --line:#24343B;
+  --accent:#7FD1C1; --accent-soft:#1B3238; --highlight:#7FD1C1; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E171C; --surface:#152229; --ink:#E6EEEC; --muted:#9AAAB0; --line:#24343B;
+  --accent:#7FD1C1; --accent-soft:#1B3238; --highlight:#7FD1C1; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--body)}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--highlight);outline-offset:3px;border-radius:4px}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;flex-wrap:wrap}
+.mark{font-family:var(--display);font-weight:700;font-size:18px;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px}
+.mark i{font-style:normal;width:32px;height:32px;border-radius:8px;background:var(--accent);color:var(--surface);display:grid;place-items:center;font-size:14px;letter-spacing:.5px}
+.top nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
+.top nav a{color:var(--muted);text-decoration:none;font-weight:500}
+.top nav a:hover{color:var(--ink)}
+.hero{padding-block:56px 40px}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:end}
+.hero-grid>*{min-width:0}
+.kicker{font-family:var(--mono);font-size:12.5px;color:var(--highlight);letter-spacing:.04em;margin:0 0 14px}
+h1{font-family:var(--display);font-size:clamp(38px,6vw,64px);line-height:1.02;margin:0 0 18px;letter-spacing:-.02em;text-wrap:balance}
+h1 span{display:block;color:var(--muted);font-size:.5em;letter-spacing:0;margin-top:10px;font-weight:600}
+.lead{font-size:17px;color:var(--muted);max-width:58ch;margin:0 0 22px}
+.cta{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:10px 16px;font-weight:600;font-size:14px;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface);cursor:pointer;font-family:var(--body)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.ledger{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;font-family:var(--mono);font-size:13px}
+.ledger h2{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 10px;font-weight:500}
+.ledger dl{margin:0;display:grid;gap:8px}
+.ledger div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+.ledger div:last-child{border-bottom:0;padding-bottom:0}
+.ledger dt{color:var(--muted);font-family:var(--body);font-size:13.5px}
+.ledger dd{margin:0;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+section{padding-block:36px;border-top:1px solid var(--line)}
+section h2{font-family:var(--display);font-size:26px;margin:0 0 6px;letter-spacing:-.01em}
+.intro{color:var(--muted);margin:0 0 20px;max-width:62ch}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:8px;align-content:start;min-width:0}
+.card h3{font-family:var(--display);font-size:18px;margin:0}
+.card p{margin:0;color:var(--muted);font-size:14.5px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tags span{font-family:var(--mono);font-size:11.5px;background:var(--accent-soft);color:var(--accent);padding:3px 8px;border-radius:6px}
+.job{display:grid;grid-template-columns:170px 1fr;gap:20px;padding-block:14px;border-bottom:1px dashed var(--line)}
+.job:last-child{border-bottom:0}
+.job>*{min-width:0}
+.when{font-family:var(--mono);font-size:12.5px;color:var(--muted);padding-top:3px}
+.job h3{font-family:var(--display);font-size:18px;margin:0}
+.job h3 small{font-family:var(--body);font-weight:500;color:var(--muted);font-size:14px}
+.job ul{margin:8px 0 0;padding-left:18px;color:var(--ink);display:grid;gap:5px}
+.job li{font-size:14.5px}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;min-width:0}
+.skill h3{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 8px;font-weight:600}
+.edu{display:grid;gap:10px}
+.edu div{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.edu b{font-weight:600}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+.contact h2{margin:0 0 4px}
+.addr{font-family:var(--mono);font-size:15px;color:var(--ink);user-select:all}
+.copied{font-size:13px;color:var(--highlight);min-height:1.2em}
+footer{padding-block:24px 40px;color:var(--muted);font-size:13px}
+@media (max-width:760px){
+  .hero-grid,.cards,.skills{grid-template-columns:1fr}
+  .job{grid-template-columns:1fr;gap:4px}
+  .hero{padding-block:36px 28px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+</style>
+<style>body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="mark" href="#home"><i>PB</i>Parth Brahmbhatt</a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.linkedin.com/in/parth-brahmbhatt-1452291b4" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+  <div class="wrap hero">
+    <div class="hero-grid">
+      <div>
+        <p class="kicker">Shopify Developer · Data Analyst</p>
+        <h1>Parth Brahmbhatt<span>I build Shopify apps and look hard at the data behind them.</span></h1>
+        <p class="lead">I work on Shopify apps, marketplace integrations and storefronts, from the Admin API to hosting and security reviews.
+          With a postgraduate diploma in data analytics, I also audit catalogues and sites with scripts and spreadsheets, and explain the
+          results to store owners in plain language.</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Get in touch</a>
+          <a class="btn" href="#work">See my work</a>
+          <a class="btn" href="https://www.linkedin.com/in/parth-brahmbhatt-1452291b4" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        </div>
+      </div>
+      <aside class="ledger" aria-label="Recent work in numbers">
+        <h2>Recent work, in numbers</h2>
+        <dl>
+          <div><dt>Shopify apps built</dt><dd>4</dd></div>
+          <div><dt>Store pages crawled</dt><dd>150+</dd></div>
+          <div><dt>Internal links checked</dt><dd>445</dd></div>
+          <div><dt>Description links audited</dt><dd>160+</dd></div>
+          <div><dt>Years building software</dt><dd>2020 →</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="wrap">
+      <h2>Selected work</h2>
+      <p class="intro">Recent projects at iFour Technolab for an e-commerce client that runs several Shopify stores.</p>
+      <div class="cards">
+        <article class="card">
+          <h3>Shopify–Etsy integration app</h3>
+          <p>Sends chosen products to the merchant's own Etsy shop as drafts, with photos, converted prices, SKU and stock. Colour words in
+            titles and tags become Etsy's colour attributes, and each product's status stays in step with Etsy.</p>
+          <div class="tags"><span>Etsy Open API</span><span>OAuth 2.0 + PKCE</span><span>Admin GraphQL</span><span>Prisma</span></div>
+        </article>
+        <article class="card">
+          <h3>Multi-store product sync app</h3>
+          <p>Copies products between stores with reusable upload profiles, keeps stock in sync on a schedule and matches custom fields.
+            Optional AI rewriting uses the merchant's own key. Prepared for the public Shopify App Store.</p>
+          <div class="tags"><span>React Router</span><span>Polaris</span><span>Metafields</span><span>Scheduled jobs</span></div>
+        </article>
+        <article class="card">
+          <h3>Instagram reels for storefronts</h3>
+          <p>Shows a store's Instagram reels on its pages through a theme app extension, plus a lighter version that uses Instagram's
+            official embeds and needs no login.</p>
+          <div class="tags"><span>Meta Graph API</span><span>Theme app extension</span><span>Liquid</span></div>
+        </article>
+        <article class="card">
+          <h3>Hosting, security and app websites</h3>
+          <p>Moved the apps to a self-managed VPS with automatic deploys and HTTPS, met Shopify's IP allowlist and security-check
+            requirements, and built each app's website, privacy policy, terms and icon.</p>
+          <div class="tags"><span>Docker</span><span>Coolify</span><span>Linux</span><span>GDPR webhooks</span></div>
+        </article>
+        <article class="card">
+          <h3>Storefront and SEO audit</h3>
+          <p>Crawled a live store to find broken links, reviewed description links for keyword-rich anchor text and flagged product
+            names that didn't match their collections. Fixes were tracked in a colour-coded sheet.</p>
+          <div class="tags"><span>Python</span><span>Excel</span><span>SEO</span></div>
+        </article>
+        <article class="card">
+          <h3>Theme customisation</h3>
+          <p>Wishlist page, currency switcher, announcement bar, back-to-top button with a scroll ring, noindex rules for policy pages and
+            responsive images for sharper banners on two live storefronts.</p>
+          <div class="tags"><span>Liquid</span><span>HTML/CSS</span><span>JavaScript</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2>Experience</h2>
+      <div class="job">
+        <div class="when">Jun 2026 – Present</div>
+        <div>
+          <h3>Software Developer <small>· iFour Technolab</small></h3>
+          <ul>
+            <li>Build and maintain Shopify apps and storefronts end to end, from the Admin API to hosting and release.</li>
+            <li>Integrate marketplaces and social platforms (Etsy, Instagram) and handle their login and approval processes.</li>
+            <li>Audit store data and links, and report progress to the store owner in plain language.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">Aug 2023 – Oct 2024</div>
+        <div>
+          <h3>Associate Technology <small>· Sutherland Global</small></h3>
+          <ul>
+            <li>Diagnosed and resolved customer-reported technical issues and guided customers to a fix.</li>
+            <li>Spotted recurring issue patterns and escalated them for deeper investigation.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">Sep 2020 – Sep 2021</div>
+        <div>
+          <h3>Junior Android Developer <small>· Dev IT</small></h3>
+          <ul>
+            <li>Built Android apps in Kotlin with REST APIs (Retrofit) and Google Maps location features.</li>
+            <li>Met clients regularly to gather requirements and report progress.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">2020 – 2023</div>
+        <div>
+          <h3>Academic projects <small>· St. Clair College &amp; GTU</small></h3>
+          <ul>
+            <li>NVIDIA financial analysis: valuation, CAPM, Monte Carlo simulation and Prophet forecasts in Python.</li>
+            <li>Driver drowsiness detection with face recognition, Flask and SQL Server; results in Tableau.</li>
+            <li>Customer satisfaction prediction with classification models on retail order data.</li>
+            <li>Vehicle rental Android app with Firebase and live Google Maps location.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <p class="intro">What I use day to day, and what I bring from data analytics.</p>
+      <div class="skills">
+        <div class="skill"><h3>Shopify</h3><div class="tags"><span>App development</span><span>Polaris</span><span>Shopify CLI</span><span>Admin GraphQL</span><span>Liquid</span><span>Theme extensions</span><span>Webhooks</span><span>Metafields</span></div></div>
+        <div class="skill"><h3>Web &amp; backend</h3><div class="tags"><span>TypeScript</span><span>JavaScript</span><span>Node.js</span><span>React</span><span>REST APIs</span><span>OAuth 2.0</span><span>HTML/CSS</span></div></div>
+        <div class="skill"><h3>Data &amp; BI</h3><div class="tags"><span>Python</span><span>Pandas</span><span>SQL</span><span>R</span><span>Power BI</span><span>Tableau</span><span>Excel</span><span>GA4</span></div></div>
+        <div class="skill"><h3>Analytics &amp; ML</h3><div class="tags"><span>Statistics</span><span>EDA</span><span>Regression</span><span>Classification</span><span>Clustering</span><span>Forecasting</span></div></div>
+        <div class="skill"><h3>Databases</h3><div class="tags"><span>PostgreSQL</span><span>Prisma</span><span>SQL Server</span><span>MySQL</span><span>Firebase</span></div></div>
+        <div class="skill"><h3>DevOps &amp; tools</h3><div class="tags"><span>Docker</span><span>Linux VPS</span><span>Coolify</span><span>Git/GitHub</span><span>Playwright</span><span>Jira</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Education</h2>
+      <div class="edu">
+        <div><span><b>Post-Graduate Diploma, Data Analytics for Business</b> · St. Clair College, Windsor, ON</span><span class="when">2021 – 2023</span></div>
+        <div><span><b>Bachelor of Engineering, Computer Engineering</b> · Gujarat Technological University</span><span class="when">2016 – 2020</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <h2>Let's talk</h2>
+          <p class="intro" style="margin:0 0 8px">Open to Shopify development and data analyst roles.</p>
+          <div class="addr" id="email">parthbrahmbhatt99@gmail.com</div>
+          <div class="copied" id="copied" aria-live="polite"></div>
+          <a href="https://www.linkedin.com/in/parth-brahmbhatt-1452291b4" target="_blank" rel="noopener noreferrer">linkedin.com/in/parth-brahmbhatt-1452291b4</a>
+        </div>
+        <div class="cta">
+          <button class="btn primary" id="copy" type="button">Copy email</button>
+          <a class="btn" href="mailto:parthbrahmbhatt99@gmail.com">Write an email</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">© 2026 Parth Brahmbhatt · <a href="https://www.linkedin.com/in/parth-brahmbhatt-1452291b4" target="_blank" rel="noopener noreferrer">LinkedIn</a></footer>
+
+<script>
+document.getElementById('copy').addEventListener('click', async () => {
+  const t = document.getElementById('email').textContent.trim(), out = document.getElementById('copied');
+  try { await navigator.clipboard.writeText(t); out.textContent = 'Email copied.'; }
+  catch (e) { const r = document.createRange(); r.selectNodeContents(document.getElementById('email')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); out.textContent = 'Press Ctrl+C to copy.'; }
+});
+</script>
+
+</body>
+</html>
